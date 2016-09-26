@@ -59,6 +59,20 @@ pets: [
 
             Assert.IsTrue(result);
             Assert.AreEqual("Ma:le\r\n\tFido\r\n", p.Result.ToString());
+
+
+            p = new AglPetOwnerParser("lion");
+            result = p.ParseAndPrint(@"[{
+name: ""Bob"",
+gender: ""Ma:le"",
+age: 23,
+pets: [
+{name: ""Garfield"",type: ""Cat""},
+{name: ""Fido"",type: ""Dog""}]
+}]");
+
+            Assert.IsTrue(result);
+            Assert.AreEqual("Ma:le\r\n", p.Result.ToString());
         }
     }
 }
